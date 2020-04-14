@@ -1,0 +1,30 @@
+﻿@model CarWebApp.Models.Manufacturer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Manufacturer</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ManufacturerName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ManufacturerName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a type="button" class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.ManufacturerId"><i class="far fa-edit"></i>Edit</a> |
+    <a type="button" class="btn btn-danger" asp-action="Index"><i class="fas fa-arrow-left"></i>Back to List</a>
+</div>

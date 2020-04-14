@@ -1,0 +1,10 @@
+﻿@model CarWebApp.VIewModels.ShoppingCartViewModel
+
+<li class="nav-item active">
+<li class="nav-item">
+    <a class="nav-link active"  asp-area="" asp-controller="ShoppingCart" asp-action="Index">
+        <span id="cart-status">
+            @Model.ShoppingCart.ShoppingCartItems.Count<i class="fas fa-shopping-bag"></i>
+        </span>
+    </a>
+</li>

@@ -1,0 +1,37 @@
+﻿@model CarWebApp.Models.Manufacturer
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 style="text-decoration:underline; text-align:center;">Add new Manufacturer</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ManufacturerName" class="control-label"></label>
+                <input asp-for="ManufacturerName" class="form-control" />
+                <span asp-validation-for="ManufacturerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" ></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" value="Create" class="btn btn-primary" ><i class="fas fa-check-circle"></i>Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a type="button" class="btn btn-danger" asp-action="Index"><i class="fas fa-arrow-left">Back to List</i></a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

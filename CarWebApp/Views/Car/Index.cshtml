@@ -1,0 +1,82 @@
+﻿@model IEnumerable<CarWebApp.Models.Car>
+
+@{
+    ViewData["Title"] = "Index";
+    
+}
+
+<h1 style="text-decoration:underline; text-align:center;">List of Cars in the Depo </h1>
+
+<p>
+    <a type="button"   class="btn btn-secondary" asp-action="Create">Create New</a>
+</p>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Released)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Instock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manufacturer)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <img src=" @Html.DisplayFor(modelItem => item.ImageUrl)" class="img-fluid" alt="" width="100" height="150" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Released)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Instock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer.ManufacturerName)
+            </td>
+            <td>
+                <div>
+
+                    <a type="button" class="btn btn-success" asp-action="Edit" asp-route-carId="@item.CarId"><i class="far fa-edit"></i></a> 
+                    <a type="button" class="btn btn-primary" asp-action="Details" asp-route-carId="@item.CarId"><i class="fas fa-info-circle"></i></a> 
+                    <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-carId="@item.CarId"><i class="far fa-trash-alt"></i></a>
+                </div>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

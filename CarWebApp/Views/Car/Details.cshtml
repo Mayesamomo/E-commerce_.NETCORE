@@ -1,0 +1,25 @@
+﻿@model CarWebApp.Models.Car
+
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Details</h1>
+<div class="col-sm-4 col-lg-4 col-md-4">
+    <div class="thumbnail">
+        <h2>
+            <a>@Html.DisplayFor(model => model.Name)</a>
+        </h2>
+        <img src="@Html.DisplayFor(modelItem => Model.ImageUrl)" alt="" width="1000" height="500">
+        <div class="caption-full">
+            <p> @Html.DisplayFor(model => model.Model)</p>
+            <p> @Html.DisplayFor(model => model.Description)</p>
+            <p>@Html.DisplayFor(model => model.Released)</p>
+            <p typeof="button" class="btn btn-outline-primary">  @Html.DisplayFor(model => model.Instock)</p>
+            <h3 class="pull-right">@Model.Price.ToString("c")</h3>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CarId"><i class="fas fa-edit"></i></a> 
+    <a asp-action="Index"><i class="fas fa-arrow-left"></i>Back to List</a>
+</div>

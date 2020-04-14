@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CarWebApp.Models.Manufacturer>
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<h1 style="text-decoration:underline; text-align:center">List Manufacturers</h1>
+
+<p>
+    <a type="button" class="btn btn-outline-dark" asp-action="Create">Add New Manufacturer</a>
+</p>
+<div class="table-responsive">
+    <table id="mytable" class="table table-bordred table-striped table-hover table-users">
+        <thead class="thead-dark">
+            <tr>
+                <th  style="padding-right:5em;">
+                    @Html.DisplayNameFor(model => model.ManufacturerName)
+                </th>
+                <th style="margin-right:1em">
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ManufacturerName)
+                    </td>
+                    <td >
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td >
+                        <div>
+                            <a class="btn btn-success btn-xs" data-title="Edit"  asp-action="Edit" asp-route-id="@item.ManufacturerId"><i class="far fa-edit"></i></a>
+                            <a  class="btn btn-primary btn-xs" data-title="Details" asp-action="Details" asp-route-id="@item.ManufacturerId"><i class="fas fa-info-circle"></i></a>
+                            <a class="btn btn-danger btn-xs" data-title="Delete"  asp-action="Delete" asp-route-id="@item.ManufacturerId"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                        
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+   

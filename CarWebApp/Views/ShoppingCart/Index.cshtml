@@ -1,0 +1,57 @@
+﻿@using CarWebApp.VIewModels
+@model ShoppingCartViewModel
+
+
+<h2>Your shopping cart</h2>
+
+<div class="row">
+    <div class="col-6 col-md-4"></div>
+    <div class="col-6 col-md-4 text-white">
+        <h2>Your shopping cart</h2>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Quanitity</th>
+                    <th>Game</th>
+                    <th class="text-right">Price</th>
+                    <th class="text-right">Subtotal</th>
+                    <th class="text-right">Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+                {
+                    <tr>
+                        <td class="text-center">@line.Quantity</td>
+                        <td class="text-left">@line.Car.Name</td>
+                        <td class="text-left"> <img src="@line.Car.ImageUrl" class="img-fluid" alt="" width="100" height="150" /></td>
+                        <td class="text-right">@line.Car.Price.ToString("c")</td>
+                        <td class="text-right">
+                            @((line.Quantity * line.Car.Price).ToString("c"))
+                        </td>
+                        <td><a class="btn btn-danger" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-carId="@line.Car.CarId"><i class="fas fa-minus"></i>Remove</a></td>
+
+                    </tr>
+
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right">Total:</td>
+                    <td class="text-right">
+                        @Model.ShoppingCartTotal.ToString("c")
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+       
+        <div class="text-center">
+            <a class="btn btn-danger" asp-controller="ShoppingCart" asp-action="ClearShoppingCart"> <i class="far fa-trash-alt"></i> Clear Cart</a>
+        </div>
+        <div class="text-center">
+            <a class="btn btn-primary" asp-controller="Order" asp-action="CheckOut">Check out</a>
+        </div>
+    </div>
+   
+</div>
+
